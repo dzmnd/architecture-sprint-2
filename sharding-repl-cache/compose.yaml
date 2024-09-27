@@ -241,7 +241,7 @@ services:
     command: 
       [ 
         "redis-server", 
-        "/usr/local/etc/redis/redis.conf" 
+        "/usr/local/etc/redis/redis.conf"
       ]
     networks:
       app-network:
@@ -283,6 +283,60 @@ services:
       app-network:
         ipv4_address: 173.17.0.13
 
+  # redis 4
+  redis_4:
+    image: "redis:latest"
+    container_name: redis_4
+    ports:
+      - "6379"
+    volumes:
+      - redis_4-data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: 
+      [ 
+        "redis-server", 
+        "/usr/local/etc/redis/redis.conf" 
+      ]
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.14
+
+  # redis 5
+  redis_5:
+    image: "redis:latest"
+    container_name: redis_5
+    ports:
+      - "6379"
+    volumes:
+      - redis_5-data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: 
+      [ 
+        "redis-server", 
+        "/usr/local/etc/redis/redis.conf" 
+      ]
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.15
+
+  # redis 6
+  redis_6:
+    image: "redis:latest"
+    container_name: redis_6
+    ports:
+      - "6379"
+    volumes:
+      - redis_6-data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: 
+      [ 
+        "redis-server", 
+        "/usr/local/etc/redis/redis.conf" 
+      ]
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.16
+
   # application
   mongo-sharding-repl:
     container_name: mongo-sharding-repl
@@ -303,6 +357,9 @@ services:
       - redis_1
       - redis_2
       - redis_3
+      - redis_4
+      - redis_5
+      - redis_6
     ports:
       - 8080:8080
     environment:
@@ -329,3 +386,6 @@ volumes:
   redis_1-data: {}
   redis_2-data: {}
   redis_3-data: {}
+  redis_4-data: {}
+  redis_5-data: {}
+  redis_6-data: {}

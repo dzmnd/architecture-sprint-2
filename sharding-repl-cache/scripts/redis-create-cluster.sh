@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/bash -x
 
 ###
 # create cluster
 ###
-docker-compose exec -T redis_1 <<EOF
-  echo "yes" | redis-cli --cluster create   173.17.0.11:6379   173.17.0.12:6379   173.17.0.13:6379 --cluster-replicas 1
-EOF
+ docker exec -i redis_1 redis-cli --cluster create 173.17.0.11:6379 173.17.0.12:6379 173.17.0.13:6379 173.17.0.14:6379 173.17.0.15:6379 173.17.0.16:6379 --cluster-replicas 1 --cluster-yes 
