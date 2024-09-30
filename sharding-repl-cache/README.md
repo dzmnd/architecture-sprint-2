@@ -26,7 +26,7 @@ docker compose up -d
 ./scripts/mongo-show-count-repl.sh
 ```
 
-Создание кластера редис
+Создание кластера редис(не выполнять, не получился вариант с кластером, пробовал и либу использовать другую + менять код приложухи)
 
 ```shell
 ./scripts/redis-create-cluster.sh
